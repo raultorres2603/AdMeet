@@ -36,11 +36,11 @@ export class AuthService implements Iauthservice {
     login.subscribe({
       next: (response: string) => {
         this.setToken(response);
-        this.toaster.success('Login Success');
+        this.toaster.success('Entrando', 'Login correcto');
         this.router.navigate(['/home']);
       },
       error: (err) => {
-        this.toaster.error('Login Failed');
+        this.toaster.error('Error en login', 'Error');
         console.log(err);
       }
     });
