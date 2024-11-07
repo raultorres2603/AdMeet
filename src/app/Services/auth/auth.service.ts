@@ -10,13 +10,10 @@ import {Router} from '@angular/router';
   providedIn: 'root'
 })
 export class AuthService implements Iauthservice {
-  token: string = sessionStorage.getItem('MUT') || '';
-  toaster: ToastrService = inject(ToastrService);
-  http: Ihttp = inject(HttpService)
-  router: Router = inject(Router);
-
-  constructor() {
-  }
+  private token: string = sessionStorage.getItem('MUT') || '';
+  private toaster: ToastrService = inject(ToastrService);
+  private http: Ihttp = inject(HttpService)
+  private router: Router = inject(Router);
 
   public setToken(newToken: string): void {
     this.token = newToken;

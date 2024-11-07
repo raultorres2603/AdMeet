@@ -8,7 +8,7 @@ import {Observable} from 'rxjs';
 })
 export class HttpService implements Ihttp {
 
-  domain = "https://localhost:7149";
+  private domain = "https://localhost:7149";
 
   constructor(private http: HttpClient) {
 

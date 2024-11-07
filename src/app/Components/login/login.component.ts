@@ -10,9 +10,9 @@ import {AuthService} from '../../Services/auth/auth.service';
   styleUrl: './login.component.css'
 })
 export class LoginComponent implements ILoginComp {
-  Email: string = '';
-  Password: string = '';
-  authService: Iauthservice = inject(AuthService);
+  private Email: string = '';
+  private Password: string = '';
+  private authService: Iauthservice = inject(AuthService);
 
   onInputChange(event: Event): void {
     switch ((event.target as HTMLInputElement).id) {
