@@ -15,7 +15,7 @@ export class AuthService implements Iauthservice {
   private http: Ihttp = inject(HttpService)
   private router: Router = inject(Router);
 
-  public setToken(newToken: string): void {
+  private setToken(newToken: string): void {
     this.token = newToken;
     sessionStorage.setItem('MUT', this.token);
   }
