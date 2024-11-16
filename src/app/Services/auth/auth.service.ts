@@ -15,7 +15,7 @@ export class AuthService implements Iauthservice {
   private http: Ihttp = inject(HttpService)
   private router: Router = inject(Router);
 
-  public setToken(newToken: string): void {
+  private setToken(newToken: string): void {
     this.token = newToken;
     sessionStorage.setItem('MUT', this.token);
   }
@@ -41,5 +41,25 @@ export class AuthService implements Iauthservice {
         console.log(err);
       }
     });
+  }
+
+  public register(user: Iuser): void {
+    const register = this.http.post('api/user/register', user);
+    register.subscribe({
+      next: () => {
+        this.toaster.success('Registrado', 'Usuario creado');
+        this.router.navigate(['/login']);
+      },
+      error: (err) => {
+        this.toaster.error('Error en registro', 'Error');
+        console.log(err);
+      }
+    });
+  }
+
+  public logOut(): void {
+    this.token = '';
+    sessionStorage.removeItem('MUT');
+    this.router.navigate(['/login']);
   }
 }

@@ -18,7 +18,6 @@ export class HttpService implements Ihttp {
   }
 
    post(url: string, data: any): Observable<any> {
-    console.log(this.domain, url)
     return this.http.post(`${this.domain}/${url}`, data);
   }
 

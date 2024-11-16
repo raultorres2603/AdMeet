@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import {Component, inject} from '@angular/core';
+import {Iauthservice} from '../../Interfaces/iauthservice';
+import {AuthService} from '../../Services/auth/auth.service';
 
 @Component({
   selector: 'app-navbar',
@@ -9,4 +11,9 @@ import { Component } from '@angular/core';
 })
 export class NavbarComponent {
 
+  private authService: Iauthservice = inject(AuthService)
+
+  logOut(): void {
+    this.authService.logOut();
+  }
 }
