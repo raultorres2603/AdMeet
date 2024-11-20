@@ -8,11 +8,10 @@ import {HttpService} from '../../Services/http/http.service';
 import {Ihttp} from '../../Interfaces/ihttp';
 
 @Component({
-  selector: 'app-root',
-  standalone: true,
-  imports: [NavbarComponent],
-  templateUrl: './home.component.html',
-  styleUrl: './home.component.css'
+    selector: 'app-root',
+    imports: [NavbarComponent],
+    templateUrl: './home.component.html',
+    styleUrl: './home.component.css'
 })
 export class HomeComponent implements OnInit {
   private authService: Iauthservice = inject(AuthService)
