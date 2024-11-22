@@ -5,6 +5,8 @@ import {Iuser} from '../../Interfaces/iuser';
 import {HttpService} from '../http/http.service';
 import {Ihttp} from '../../Interfaces/ihttp';
 import {Router} from '@angular/router';
+import {Iuserservice} from '../../Interfaces/iuserservice';
+import {UserService} from '../user/user.service';
 
 @Injectable({
   providedIn: 'root'
@@ -12,6 +14,7 @@ import {Router} from '@angular/router';
 export class AuthService implements Iauthservice {
   private token: string = sessionStorage.getItem('MUT') || '';
   private toaster: ToastrService = inject(ToastrService);
+  private userService: Iuserservice = inject(UserService)
   private http: Ihttp = inject(HttpService)
   private router: Router = inject(Router);
 
@@ -60,6 +63,7 @@ export class AuthService implements Iauthservice {
   public logOut(): void {
     this.token = '';
     sessionStorage.removeItem('MUT');
+    this.userService.logOut();
     this.router.navigate(['/login']);
   }
 }
