@@ -1,11 +1,11 @@
 import {Iuser} from './iuser';
 
 export interface Iuserservice {
-  getEmail(): string;
+    getEmail(): string;
 
-  getPassword(): string;
+    getPassword(): string;
 
-  toString(): string;
+    toString(): string;
 
-  updateInfo(user: Iuser): string
+    updateInfo(user: Iuser): void
 }

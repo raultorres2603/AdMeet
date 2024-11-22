@@ -3,42 +3,41 @@ import {Iuser} from '../../Interfaces/iuser';
 import {Iuserservice} from '../../Interfaces/iuserservice';
 
 @Injectable({
-  providedIn: 'root'
+    providedIn: 'root'
 })
 export class UserService implements Iuserservice {
-  private readonly user: Iuser
+    private readonly user: Iuser
 
-  constructor() {
-    this.user = {
-      Email: '',
-      Password: ''
+    constructor() {
+        this.user = {
+            Email: '',
+            Password: ''
+        }
     }
-  }
 
-  getEmail(): string {
-    return this.user.Email;
-  }
+    getEmail(): string {
+        return this.user.Email;
+    }
 
-  getPassword(): string {
-    return this.user.Password;
-  }
+    getPassword(): string {
+        return this.user.Password;
+    }
 
-  private setEmail(email: string): void {
-    this.user.Email = email;
-  }
+    private setEmail(email: string): void {
+        this.user.Email = email;
+    }
 
-  private setPassword(password: string): void {
-    this.user.Password = password;
-  }
+    private setPassword(password: string): void {
+        this.user.Password = password;
+    }
 
-  toString(): string {
-    return JSON.stringify(this.user);
-  }
+    toString(): string {
+        return JSON.stringify(this.user);
+    }
 
-  updateInfo(user: Iuser): string {
-    this.setEmail(user.Email);
-    this.setPassword(user.Password);
-    return this.toString();
-  }
+    updateInfo(user: Iuser): void {
+        this.setEmail(user.Email);
+        this.setPassword(user.Password);
+    }
 
 }

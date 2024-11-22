@@ -3,11 +3,10 @@ import {ILoginComp} from '../../Interfaces/ilogin-comp';
 import {Iauthservice} from '../../Interfaces/iauthservice';
 import {AuthService} from '../../Services/auth/auth.service';
 @Component({
-  selector: 'app-root',
-  standalone: true,
-  imports: [],
-  templateUrl: './login.component.html',
-  styleUrl: './login.component.css'
+    selector: 'app-root',
+    imports: [],
+    templateUrl: './login.component.html',
+    styleUrl: './login.component.css'
 })
 export class LoginComponent implements ILoginComp {
   private Email: string = '';
