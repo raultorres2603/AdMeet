@@ -6,12 +6,13 @@ import {UserService} from '../../Services/user/user.service';
 import {Iuserservice} from '../../Interfaces/iuserservice';
 import {HttpService} from '../../Services/http/http.service';
 import {Ihttp} from '../../Interfaces/ihttp';
+import {Iuser} from '../../Interfaces/iuser';
 
 @Component({
-    selector: 'app-root',
-    imports: [NavbarComponent],
-    templateUrl: './home.component.html',
-    styleUrl: './home.component.css'
+  selector: 'app-root',
+  imports: [NavbarComponent],
+  templateUrl: './home.component.html',
+  styleUrl: './home.component.css'
 })
 export class HomeComponent implements OnInit {
   private authService: Iauthservice = inject(AuthService)
@@ -21,7 +22,8 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
     console.log("Auth done");
     this.http.get(`api/user/${this.authService.getToken()}/get`).subscribe({
-      next: (response) => {
+      next: (response: Iuser) => {
+        console.log(response)
         this.userService.updateInfo(response);
         console.log(this.userService.toString());
       },

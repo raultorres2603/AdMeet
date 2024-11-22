@@ -1,43 +1,42 @@
-import {Injectable} from '@angular/core';
+import {Injectable, signal} from '@angular/core';
 import {Iuser} from '../../Interfaces/iuser';
 import {Iuserservice} from '../../Interfaces/iuserservice';
 
 @Injectable({
-    providedIn: 'root'
+  providedIn: 'root'
 })
 export class UserService implements Iuserservice {
-    private readonly user: Iuser
+  private user = signal<Iuser>({
+    email: '',
+    password: ''
+  });
 
-    constructor() {
-        this.user = {
-            Email: '',
-            Password: ''
-        }
-    }
 
-    getEmail(): string {
-        return this.user.Email;
-    }
+  getEmail(): string {
+    return this.user().email;
+  }
 
-    getPassword(): string {
-        return this.user.Password;
-    }
+  getPassword(): string {
+    return this.user().password;
+  }
 
-    private setEmail(email: string): void {
-        this.user.Email = email;
-    }
+  updateInfo(vUser: Iuser): void {
+    this.user.update(u => ({
+      ...u,
+      ...vUser
+    }));
+    console.log(this.user());
+  }
 
-    private setPassword(password: string): void {
-        this.user.Password = password;
-    }
+  logOut(): void {
+    this.user.update(_ => ({
+      email: '',
+      password: ''
+    }));
+    console.log(this.user());
+  }
 
-    toString(): string {
-        return JSON.stringify(this.user);
-    }
-
-    updateInfo(user: Iuser): void {
-        this.setEmail(user.Email);
-        this.setPassword(user.Password);
-    }
-
+  toString(): string {
+    return `${this.getEmail()} - ${this.getPassword()}`;
+  }
 }

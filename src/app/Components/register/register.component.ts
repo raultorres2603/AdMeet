@@ -3,10 +3,10 @@ import {Iauthservice} from '../../Interfaces/iauthservice';
 import {AuthService} from '../../Services/auth/auth.service';
 
 @Component({
-    selector: 'app-register',
-    imports: [],
-    templateUrl: './register.component.html',
-    styleUrl: './register.component.css'
+  selector: 'app-register',
+  imports: [],
+  templateUrl: './register.component.html',
+  styleUrl: './register.component.css'
 })
 export class RegisterComponent {
   private Email: string = '';
@@ -28,8 +28,8 @@ export class RegisterComponent {
 
   register() {
     this.authService.register({
-      Email: this.Email,
-      Password: this.Password
+      email: this.Email,
+      password: this.Password
     })
   }
 }
