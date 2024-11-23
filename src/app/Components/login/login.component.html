@@ -1,15 +1,14 @@
-
-<div class="loginCont grid grid-rows-1">
-  <div class="titleLogin mx-auto my-2 text-5xl"> Login</div>
+<div class="loginCont grid grid-rows-1 bg-sky-200">
+  <div class="titleLogin mx-auto my-2 text-5xl font-bold">AdMeet</div>
 </div>
 
-<div class="formLogIn grid grid-rows-2 text-center gap-2 mx-4 content-center ">
+<div class="formLogIn grid grid-rows-2 text-center gap-3 mx-4 content-center mt-2 ">
   <div class="grid grid-rows-1">
     <input
       type="text"
       name="user"
       id="Email"
-      class="transition-all ease-in-out userInput text-center border-b border-gray hover:scale-105 focus:outline-none"
+      class="transition-all bg-zinc-100 rounded-lg font-semibold ease-in-out userInput text-center border-b border-gray hover:scale-105 focus:outline-none text-xl"
       placeholder="Username"
       (input)="onInputChange($event)"
     />
@@ -21,15 +20,15 @@
       type="password"
       name="pass"
       id="Password"
-      class="transition-all ease-in-out userInput text-center border-b border-gray hover:scale-105 focus:outline-none"
+      class="transition-all bg-zinc-100 rounded-lg font-semibold ease-in-out userInput text-center border-b border-gray hover:scale-105 focus:outline-none text-xl"
       placeholder="Password"
       (input)="onInputChange($event)"
     />
   </div>
 </div>
-<div class="grid grid-rows-1 mx-5 my-2 content-center">
+<div class="grid grid-rows-1 mx-5 my-2 content-center mt-3">
   <button (click)="logIn()"
-          class="transition-all hover:bg-blue-600 hover:scale-105 rounded bg-blue-400 px-3 py-1 text-white w-full text-xl">
+          class="transition-all hover:bg-blue-600 hover:scale-105 font-semibold rounded bg-blue-400 px-3 py-1 text-white w-full text-2xl active:scale-100">
     Login
   </button>
 </div>
