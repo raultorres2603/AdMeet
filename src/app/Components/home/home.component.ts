@@ -27,7 +27,7 @@ export class HomeComponent implements OnInit {
       next: (response: Iuser) => {
         console.log(response)
         this.userService.updateInfo(response);
-        console.log(this.userService.getUser());
+        this.userInfo = this.userService.getUser();
         console.log(this.userService.toString());
       },
       error: (err) => {
