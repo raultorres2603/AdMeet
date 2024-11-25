@@ -32,7 +32,7 @@ export class RegisterComponent {
   register() {
     this.authService.register({
       email: this.Email,
-      password: this.Password
+      password: this.Password,
     })
   }
 }

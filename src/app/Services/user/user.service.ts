@@ -8,7 +8,12 @@ import {Iuserservice} from '../../Interfaces/iuserservice';
 export class UserService implements Iuserservice {
   private user = signal<Iuser>({
     email: '',
-    password: ''
+    password: '',
+    name: '',
+    lastName: '',
+    zipCode: '',
+    city: '',
+    country: ''
   });
 
 
@@ -28,10 +33,19 @@ export class UserService implements Iuserservice {
     console.log(this.user());
   }
 
+  getUser(): Iuser {
+    return this.user();
+  }
+
   logOut(): void {
     this.user.update(_ => ({
       email: '',
-      password: ''
+      password: '',
+      name: '',
+      lastName: '',
+      zipCode: '',
+      city: '',
+      country: ''
     }));
     console.log(this.user());
   }

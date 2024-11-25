@@ -29,7 +29,7 @@ export class LoginComponent implements ILoginComp {
   logIn(): void {
     this.authService.logIn({
       email: this.Email,
-      password: this.Password
+      password: this.Password,
     });
   }
 

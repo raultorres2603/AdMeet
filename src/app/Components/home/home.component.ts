@@ -7,17 +7,19 @@ import {Iuserservice} from '../../Interfaces/iuserservice';
 import {HttpService} from '../../Services/http/http.service';
 import {Ihttp} from '../../Interfaces/ihttp';
 import {Iuser} from '../../Interfaces/iuser';
+import {ProfileComponent} from '../profile/profile.component';
 
 @Component({
   selector: 'app-root',
-  imports: [NavbarComponent],
+  imports: [NavbarComponent, ProfileComponent],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })
 export class HomeComponent implements OnInit {
   private authService: Iauthservice = inject(AuthService)
   private userService: Iuserservice = inject(UserService);
-  private http: Ihttp = inject(HttpService)
+  private http: Ihttp = inject(HttpService);
+  public userInfo: Iuser = this.userService.getUser();
 
   ngOnInit(): void {
     console.log("Auth done");
@@ -25,6 +27,7 @@ export class HomeComponent implements OnInit {
       next: (response: Iuser) => {
         console.log(response)
         this.userService.updateInfo(response);
+        console.log(this.userService.getUser());
         console.log(this.userService.toString());
       },
       error: (err) => {

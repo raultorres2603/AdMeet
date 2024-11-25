@@ -10,4 +10,6 @@ export interface Iuserservice {
   updateInfo(user: Iuser): void
 
   logOut(): void
+
+  getUser(): Iuser
 }
