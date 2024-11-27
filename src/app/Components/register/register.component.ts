@@ -1,10 +1,13 @@
 import {Component, inject} from '@angular/core';
 import {Iauthservice} from '../../Interfaces/iauthservice';
 import {AuthService} from '../../Services/auth/auth.service';
+import {IniTitleComponent} from '../ini-title/ini-title.component';
 
 @Component({
   selector: 'app-register',
-  imports: [],
+  imports: [
+    IniTitleComponent
+  ],
   templateUrl: './register.component.html',
   styleUrl: './register.component.css'
 })
@@ -29,7 +32,7 @@ export class RegisterComponent {
   register() {
     this.authService.register({
       email: this.Email,
-      password: this.Password
+      password: this.Password,
     })
   }
 }

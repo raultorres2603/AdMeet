@@ -2,10 +2,11 @@ import {Component, inject} from '@angular/core';
 import {ILoginComp} from '../../Interfaces/ilogin-comp';
 import {Iauthservice} from '../../Interfaces/iauthservice';
 import {AuthService} from '../../Services/auth/auth.service';
+import {IniTitleComponent} from '../ini-title/ini-title.component';
 
 @Component({
   selector: 'app-root',
-  imports: [],
+  imports: [IniTitleComponent],
   templateUrl: './login.component.html',
   styleUrl: './login.component.css'
 })
@@ -28,7 +29,7 @@ export class LoginComponent implements ILoginComp {
   logIn(): void {
     this.authService.logIn({
       email: this.Email,
-      password: this.Password
+      password: this.Password,
     });
   }
 
