@@ -66,4 +66,9 @@ export class AuthService implements Iauthservice {
     this.userService.logOut();
     this.router.navigate(['/login']);
   }
+
+  public updateToken(newToken: string): void {
+    this.setToken(newToken);
+    sessionStorage.setItem('MUT', this.token);
+  }
 }

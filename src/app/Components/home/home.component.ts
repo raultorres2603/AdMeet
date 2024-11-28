@@ -9,14 +9,20 @@ import {Ihttp} from '../../Interfaces/ihttp';
 import {Iuser} from '../../Interfaces/iuser';
 import {ProfileComponent} from '../profile/profile.component';
 
+interface Iresponse {
+  user: Iuser,
+  newTok: string
+}
+
 @Component({
   selector: 'app-root',
   imports: [NavbarComponent, ProfileComponent],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })
+
 export class HomeComponent implements OnInit {
-  private authService: Iauthservice = inject(AuthService)
+  private authService: Iauthservice = inject(AuthService);
   private userService: Iuserservice = inject(UserService);
   private http: Ihttp = inject(HttpService);
   public userInfo: Iuser = this.userService.getUser();
@@ -24,14 +30,14 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
     console.log("Auth done");
     this.http.get(`api/user/${this.authService.getToken()}/get`).subscribe({
-      next: (response: Iuser) => {
-        console.log(response)
-        this.userService.updateInfo(response);
+      next: (response: Iresponse) => {
+        this.userService.updateInfo(response.user);
         this.userInfo = this.userService.getUser();
+        this.authService.updateToken(response.newTok);
         console.log(this.userService.toString());
       },
-      error: (err) => {
-        console.log(err);
+      error: (_) => {
+        this.authService.logOut();
       }
     })
   }
