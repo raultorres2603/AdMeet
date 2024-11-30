@@ -1,11 +1,76 @@
-<div class="profileInfo border-1 p-2 border-zinc-900 rounded-lg mx-2">
-  <div class="createProfile text-xl text-center" *ngIf="userInfo.name == ''; else showProfile">
-    Tienes que crear un perfil
-  </div>
-
-  <ng-template #showProfile>
-    <div class="profileInfo border-1 p-2 border-zinc-900 rounded-lg mx-2">
-
+<div class="profileInfo border-2 p-2 border-zinc-800 rounded-lg mx-1">
+  <div class="createProfile" *ngIf="userInfo.name == ''; else showProfile">
+    <div class="title text-center text-xl mb-2">
+      Crear perfil
     </div>
-  </ng-template>
+    <!--
+     email: string;
+  password: string;
+  name?: string;
+  lastName?: string;
+  city?: string;
+  country?: string;
+  zipCode?: string;
+     -->
+    <div class="grid grid-cols-1 gap-2 lg:grid-cols-3">
+      <div class="grid grid-rows-1">
+        <input
+          type="text"
+          id="name"
+          class="transition-all bg-zinc-100 rounded-lg font-semibold ease-in-out userInput border-b border-t p-1 border-black hover:scale-105 focus:outline-none text-lg"
+          placeholder="Nombre"
+          (input)="updateProp('name', $event)"
+        />
+      </div>
+      <div class="grid grid-rows-1">
+        <input
+          type="text"
+          id="lastName"
+          class="transition-all bg-zinc-100 rounded-lg font-semibold ease-in-out userInput border-b border-t p-1 border-black hover:scale-105 focus:outline-none text-lg"
+          placeholder="Apellidos"
+          (input)="updateProp('lastName', $event)"
+        />
+      </div>
+      <div class="grid grid-rows-1">
+        <input
+          type="text"
+          id="city"
+          class="transition-all bg-zinc-100 rounded-lg font-semibold ease-in-out userInput border-b border-t p-1 border-black hover:scale-105 focus:outline-none text-lg"
+          placeholder="Ciudad"
+          (input)="updateProp('city', $event)"
+        />
+      </div>
+      <div class="grid grid-rows-1">
+        <input
+          type="text"
+          id="country"
+          class="transition-all bg-zinc-100 rounded-lg font-semibold ease-in-out userInput border-b border-t p-1 border-black hover:scale-105 focus:outline-none text-lg"
+          placeholder="País"
+          (input)="updateProp('country', $event)"
+        />
+      </div>
+      <div class="grid grid-rows-1">
+        <input
+          type="text"
+          id="zipCode"
+          class="transition-all bg-zinc-100 rounded-lg font-semibold ease-in-out userInput border-b border-t p-1 border-black hover:scale-105 focus:outline-none text-lg"
+          placeholder="Código Postal"
+          (input)="updateProp('zipCode', $event)"
+        />
+      </div>
+      <div class="grid grid-rows-1 mx-3">
+        <button
+          class="transition-all hover:bg-blue-600 hover:scale-105 font-semibold rounded bg-blue-400 p-1 text-white w-full text-xl active:scale-100"
+          (click)="updateProfile()">
+          Guardar
+        </button>
+      </div>
+    </div>
+  </div>
 </div>
+
+<ng-template #showProfile>
+  <div class="profileInfo">
+
+  </div>
+</ng-template>
