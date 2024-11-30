@@ -47,6 +47,19 @@ export class AuthService implements Iauthservice {
     });
   }
 
+  updateInfoOnDb(user: Iuser): void {
+    this.http.put(`api/user/${this.getToken()}/update`, user).subscribe({
+      next: () => {
+        this.toaster.success('Actualizado', 'Información actualizada');
+        this.router.navigate(['/home']);
+      },
+      error: (err) => {
+        this.toaster.error('Error en actualización', 'Error');
+        console.log(err);
+      }
+    });
+  }
+
   public register(user: Iuser): void {
     const register = this.http.post('api/user/register', user);
     register.subscribe({

@@ -15,5 +15,4 @@ export interface Iuserservice {
 
   updateKeyValue(key: string, value: string): void
 
-  updateInfoOnDb(user: Iuser): void
 }
