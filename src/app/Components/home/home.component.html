@@ -4,8 +4,25 @@
     <app-edit-profile [userInfo]="this.userInfo"/>
   </div>
   <ng-template #showControls>
-    <div class="showControls">
-      Hola {{ this.userInfo().profile!.name }}
+    <div class="showControls grid grid-cols-3 gap-2 m-3">
+      <div class="buttonGoProfile">
+        <button
+          class="transition-all border-2 border-sky-900 hover:bg-blue-600 hover:scale-105 font-semibold rounded bg-blue-400 p-1 text-white w-full text-xl active:scale-100">
+          Perfil
+        </button>
+      </div>
+      <div class="buttonFriends">
+        <button
+          class="transition-all border-2 border-sky-900 hover:bg-blue-600 hover:scale-105 font-semibold rounded bg-blue-400 p-1 text-white w-full text-xl active:scale-100">
+          Amigos
+        </button>
+      </div>
+      <div class="buttonMeetings">
+        <button
+          class="transition-all border-2 border-sky-900 hover:bg-blue-600 hover:scale-105 font-semibold rounded bg-blue-400 p-1 text-white w-full text-xl active:scale-100">
+          Quedadas
+        </button>
+      </div>
     </div>
   </ng-template>
 </div>
