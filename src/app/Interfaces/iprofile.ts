@@ -4,4 +4,6 @@ export interface Iprofile {
   zipCode?: string;
   city?: string;
   country?: string;
+
+  [key: string]: string | undefined;
 }

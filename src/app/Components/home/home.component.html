@@ -1,5 +1,11 @@
 <app-navbar/>
 <div class="home grid grid-rows-2">
-  <div class="profileInfo mt-2">
+  <div class="profileEdit" *ngIf="this.profileEdit(); else showControls">
+    <app-edit-profile [userInfo]="this.userInfo"/>
   </div>
+  <ng-template #showControls>
+    <div class="showControls">
+      Hola {{ this.userInfo().profile!.name }}
+    </div>
+  </ng-template>
 </div>

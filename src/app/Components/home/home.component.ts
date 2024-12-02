@@ -1,4 +1,4 @@
-import {Component, inject, OnInit} from '@angular/core';
+import {Component, inject, OnInit, signal, WritableSignal} from '@angular/core';
 import {NavbarComponent} from '../navbar/navbar.component';
 import {Iauthservice} from '../../Interfaces/iauthservice';
 import {AuthService} from '../../Services/auth/auth.service';
@@ -7,7 +7,8 @@ import {Iuserservice} from '../../Interfaces/iuserservice';
 import {HttpService} from '../../Services/http/http.service';
 import {Ihttp} from '../../Interfaces/ihttp';
 import {Iuser} from '../../Interfaces/iuser';
-import {ProfileComponent} from '../profile/profile.component';
+import {ProfileEditComponent} from '../edit-profile/profile-edit.component';
+import {CommonModule} from '@angular/common';
 
 interface Iresponse {
   user: Iuser,
@@ -16,7 +17,7 @@ interface Iresponse {
 
 @Component({
   selector: 'app-root',
-  imports: [NavbarComponent, ProfileComponent],
+  imports: [NavbarComponent, ProfileEditComponent, CommonModule],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })
@@ -25,16 +26,23 @@ export class HomeComponent implements OnInit {
   private authService: Iauthservice = inject(AuthService);
   private userService: Iuserservice = inject(UserService);
   private http: Ihttp = inject(HttpService);
-  public userInfo: Iuser = this.userService.getUser();
+  public userInfo: WritableSignal<Iuser> = signal<Iuser>(this.userService.getUser());
+  public profileEdit: WritableSignal<boolean> = signal<boolean>(false);
 
   ngOnInit(): void {
     console.log("Auth done");
     this.http.get(`api/user/${this.authService.getToken()}/get`).subscribe({
       next: (response: Iresponse) => {
         this.userService.updateInfo(response.user);
-        this.userInfo = this.userService.getUser();
+        this.userInfo.set(this.userService.getUser());
         this.authService.updateToken(response.newTok);
-        console.log(this.userService.toString());
+        const profileKeys = Object.keys(this.userInfo().profile!);
+        for (const key of profileKeys) {
+          if (this.userInfo().profile![key] == "") {
+            this.profileEdit.set(true);
+            break;
+          }
+        }
       },
       error: (_) => {
         this.authService.logOut();
