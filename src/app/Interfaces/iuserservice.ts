@@ -12,4 +12,7 @@ export interface Iuserservice {
   logOut(): void
 
   getUser(): Iuser
+
+  updateKeyValue(key: string, value: string): void
+
 }
