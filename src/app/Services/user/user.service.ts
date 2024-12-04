@@ -14,17 +14,12 @@ export class UserService implements Iuserservice {
       lastName: '',
       city: '',
       country: '',
-      zipCode: ''
+      zipCode: '',
+      gender: '',
+      birthday: '',
+      preferences: ''
     }
   });
-
-  getEmail(): string {
-    return this.user().email;
-  }
-
-  getPassword(): string {
-    return this.user().password;
-  }
 
   updateInfo(vUser: Iuser): void {
     this.user.update(u => ({
@@ -45,10 +40,6 @@ export class UserService implements Iuserservice {
       profile: {}
     }));
     console.log(this.user());
-  }
-
-  toString(): string {
-    return `${this.getEmail()} - ${this.getPassword()}`;
   }
 
   updateKeyValue(key: string, value: string): void {

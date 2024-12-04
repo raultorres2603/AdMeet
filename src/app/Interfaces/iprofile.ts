@@ -5,5 +5,10 @@ export interface Iprofile {
   city?: string;
   country?: string;
 
+  // Otros campos del perfil
+  gender?: string;
+  birthday?: string;
+  preferences?: string;
+
   [key: string]: string | undefined;
 }

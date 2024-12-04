@@ -1,66 +1,66 @@
 <div class="profileInfo">
-  <div class="grid grid-rows-1">
-    <div class="grid grid-rows-1 bg-sky-200 border-b-2 border-sky-600 mb-2">
-      <div class="titleLogin mx-auto text-2xl font-semibold">Perfil</div>
+    <div class="grid grid-rows-1">
+        <div class="grid grid-rows-1 bg-sky-200 border-b-2 border-sky-600 mb-2">
+            <div class="titleLogin mx-auto text-2xl font-semibold">Perfil</div>
+        </div>
+        <div class="grid grid-cols-1 mx-4 gap-2">
+            <div class="grid grid-rows-1">
+                <input
+                        type="text"
+                        id="name"
+                        class="transition-all rounded-lg font-semibold ease-in-out userInput text-center border-b-2 border-zinc-900 hover:scale-105 focus:outline-none text-xl"
+                        placeholder="Name"
+                        [value]="userInfo().profile!.name"
+                        (input)="onInputChange($event, 'name')"
+                />
+            </div>
+            <div class="grid grid-rows-1">
+                <input
+                        type="text"
+                        id="lastName"
+                        class="transition-all rounded-lg font-semibold ease-in-out userInput text-center border-b-2 border-zinc-900 hover:scale-105 focus:outline-none text-xl"
+                        placeholder="Apellido"
+                        [value]="userInfo().profile!.lastName"
+                        (input)="onInputChange($event, 'name')"
+                />
+            </div>
+            <div class="grid grid-rows-1">
+                <input
+                        type="text"
+                        id="country"
+                        class="transition-all rounded-lg font-semibold ease-in-out userInput text-center border-b-2 border-zinc-900 hover:scale-105 focus:outline-none text-xl"
+                        placeholder="País"
+                        [value]="userInfo().profile!.country"
+                        (input)="onInputChange($event, 'country')"
+                />
+            </div>
+            <div class="grid grid-rows-1">
+                <input
+                        type="text"
+                        id="city"
+                        class="transition-all rounded-lg font-semibold ease-in-out userInput text-center border-b-2 border-zinc-900 hover:scale-105 focus:outline-none text-xl"
+                        placeholder="Ciudad"
+                        [value]="userInfo().profile!.city"
+                        (input)="onInputChange($event, 'city')"
+                />
+            </div>
+            <div class="grid grid-rows-1">
+                <input
+                        type="text"
+                        id="zipCode"
+                        class="transition-all rounded-lg font-semibold ease-in-out userInput text-center border-b-2 border-zinc-900 hover:scale-105 focus:outline-none text-xl"
+                        placeholder="Cod. Postal"
+                        [value]="userInfo().profile!.zipCode"
+                        (input)="onInputChange($event, 'zipCode')"
+                />
+            </div>
+        </div>
     </div>
-    <div class="grid grid-cols-1 mx-4 gap-2">
-      <div class="grid grid-rows-1">
-        <input
-          type="text"
-          id="name"
-          class="transition-all rounded-lg font-semibold ease-in-out userInput text-center border-b-2 border-zinc-900 hover:scale-105 focus:outline-none text-xl"
-          placeholder="Name"
-          [value]="userInfo().profile!.name"
-          (input)="onInputChange($event, 'name')"
-        />
-      </div>
-      <div class="grid grid-rows-1">
-        <input
-          type="text"
-          id="lastName"
-          class="transition-all rounded-lg font-semibold ease-in-out userInput text-center border-b-2 border-zinc-900 hover:scale-105 focus:outline-none text-xl"
-          placeholder="Apellido"
-          [value]="userInfo().profile!.lastName"
-          (input)="onInputChange($event, 'name')"
-        />
-      </div>
-      <div class="grid grid-rows-1">
-        <input
-          type="text"
-          id="country"
-          class="transition-all rounded-lg font-semibold ease-in-out userInput text-center border-b-2 border-zinc-900 hover:scale-105 focus:outline-none text-xl"
-          placeholder="País"
-          [value]="userInfo().profile!.country"
-          (input)="onInputChange($event, 'country')"
-        />
-      </div>
-      <div class="grid grid-rows-1">
-        <input
-          type="text"
-          id="city"
-          class="transition-all rounded-lg font-semibold ease-in-out userInput text-center border-b-2 border-zinc-900 hover:scale-105 focus:outline-none text-xl"
-          placeholder="Ciudad"
-          [value]="userInfo().profile!.city"
-          (input)="onInputChange($event, 'city')"
-        />
-      </div>
-      <div class="grid grid-rows-1">
-        <input
-          type="text"
-          id="zipCode"
-          class="transition-all rounded-lg font-semibold ease-in-out userInput text-center border-b-2 border-zinc-900 hover:scale-105 focus:outline-none text-xl"
-          placeholder="Cod. Postal"
-          [value]="userInfo().profile!.zipCode"
-          (input)="onInputChange($event, 'zipCode')"
-        />
-      </div>
+    <div class="grid grid-rows-1 mt-2 mx-5">
+        <button (click)="saveProfile()"
+                class="transition-all hover:bg-blue-600 hover:scale-105 font-semibold rounded bg-blue-400 px-3 py-1 text-white w-full text-2xl active:scale-100">
+            Guardar
+        </button>
     </div>
-  </div>
-  <div class="grid grid-rows-1">
-    <button (click)="saveProfile()"
-            class="transition-all hover:bg-blue-600 hover:scale-105 font-semibold rounded bg-blue-400 px-3 py-1 text-white w-full text-2xl active:scale-100">
-      Guardar
-    </button>
-  </div>
-  <hr>
+    <hr>
 </div>
