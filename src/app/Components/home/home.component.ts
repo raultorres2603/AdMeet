@@ -27,7 +27,6 @@ export class HomeComponent implements OnInit {
   private userService: Iuserservice = inject(UserService);
   private http: Ihttp = inject(HttpService);
   public userInfo: WritableSignal<Iuser> = signal<Iuser>(this.userService.getUser());
-  public profileEdit: WritableSignal<boolean> = signal<boolean>(false);
 
   ngOnInit(): void {
     console.log("Auth done");
@@ -36,13 +35,6 @@ export class HomeComponent implements OnInit {
         this.userService.updateInfo(response.user);
         this.userInfo.set(this.userService.getUser());
         this.authService.updateToken(response.newTok);
-        const profileKeys = Object.keys(this.userInfo().profile!);
-        for (const key of profileKeys) {
-          if (this.userInfo().profile![key] == "") {
-            this.profileEdit.set(true);
-            break;
-          }
-        }
       },
       error: (_) => {
         this.authService.logOut();
