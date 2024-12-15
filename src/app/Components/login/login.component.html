@@ -1,31 +1,66 @@
-<app-ini-title/>
-<div class="formLogIn grid grid-rows-2 text-center gap-3 mx-4 content-center mt-2 ">
-  <div class="grid grid-rows-1">
-    <input
-      type="text"
-      name="user"
-      id="Email"
-      class="transition-all bg-zinc-100 rounded-lg font-semibold ease-in-out userInput text-center border-b border-gray hover:scale-105 focus:outline-none text-xl"
-      placeholder="Username"
-      (input)="onInputChange($event)"
-    />
+<div class="container bg-cyan-50 h-full fixed">
 
+  <h4 class="font-bold-m text-center mt-2">Welcome to
+    <app-ini-title/>
+  </h4>
+  <p class="text-lg text-center">Sign in to manager your meeting</p>
+
+  <div class="formLogIn grid grid-rows-2 text-center">
+    <div class="grid grid-rows-1 relative">
+      <label class="text-left font-bold my-2" for="Email">Email</label>
+<!--      <i class="fas fa-envelope absolute left-3 top-envelope transform -translate-y-1/2 text-gray-400 text-xl z-10"></i>-->
+      <input
+        type="text"
+        name="user"
+        id="Email"
+        class="transition-all rounded-xl ease-in-out userInput border-solid border-2 py-2 pl-12 focus:border-green-600 hover:scale-105 focus:outline-none text-xl w-full"
+        placeholder="Enter your email"
+        (input)="onInputChange($event)"
+      />
+    </div>
+
+
+    <div class="grid grid-rows-1">
+      <label class="text-left font-bold mt-2 mb-0" for="Password">Password</label>
+<!--      <i class="fas fa-lock absolute left-6 top-lock transform -translate-y-1/2 text-gray-400 text-xl z-10"></i>-->
+      <input
+        type="password"
+        name="pass"
+        id="Password"
+        class="transition-all rounded-xl ease-in-out userInput border-solid border-2 py-2 pl-12 focus:border-green-600 hover:scale-105 focus:outline-none text-xl"
+        placeholder="Enter your password"
+        (input)="onInputChange($event)"
+      />
+    </div>
   </div>
 
-  <div class="grid grid-rows-1">
-    <input
-      type="password"
-      name="pass"
-      id="Password"
-      class="transition-all bg-zinc-100 rounded-lg font-semibold ease-in-out userInput text-center border-b border-gray hover:scale-105 focus:outline-none text-xl"
-      placeholder="Password"
-      (input)="onInputChange($event)"
-    />
+  <div class="flex items-center justify-between my-4">
+    <label class="flex items-center">
+      <input
+        type="checkbox"
+        class="rounded border-gray-300 text-teal-600 shadow-sm focus:border-teal-300
+              focus:ring focus:ring-teal-200 focus:ring-opacity-50"
+      />
+      <span class="ml-2 text-sm text-gray-600">Remember me</span>
+    </label>
+    <a
+      href="#"
+      class="text-sm no-underline text-teal-600 hover:text-teal-500 transition-colors"
+    >
+      Forgot?
+    </a>
   </div>
-</div>
-<div class="grid grid-rows-1 mx-5 my-2 content-center mt-3">
-  <button (click)="logIn()"
-          class="transition-all hover:bg-blue-600 hover:scale-105 font-semibold rounded bg-blue-400 px-3 py-1 text-white w-full text-2xl active:scale-100">
-    Login
-  </button>
+
+  <div class="grid grid-rows-1 justify-center">
+    <button (click)="logIn()"
+            class="transition-all hover:bg-teal-700  hover:scale-105 font-semibold rounded bg-teal-600 px-3 py-1 text-white w-72 text-2xl active:scale-100">
+      Login
+    </button>
+  </div>
+
+  <div class="grid grid-rows-1 mt-4">
+    <p class="text-center">Don't have an account?
+      <a class="text-teal-600 hover:text-teal-500 transition-colors no-underline" >Sign up</a>
+    </p>
+  </div>
 </div>
