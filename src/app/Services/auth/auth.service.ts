@@ -60,7 +60,7 @@ export class AuthService implements Iauthservice {
     });
   }
 
-  public register(user: Iuser): void {
+  register(user: Iuser): void {
     const register = this.http.post('api/user/register', user);
     register.subscribe({
       next: () => {
@@ -74,13 +74,13 @@ export class AuthService implements Iauthservice {
     });
   }
 
-  public logOut(): void {
+  logOut(): void {
     this.cookieService.delete('MUT');
     this.userService.logOut();
     this.router.navigate(['/login']);
   }
 
-  public updateToken(newToken: string): void {
+  updateToken(newToken: string): void {
     this.setToken(newToken);
   }
 }
