@@ -1,3 +1,4 @@
+<app-navbar/>
 <div class="profileInfo">
   <div class="grid grid-rows-1">
     <div class="grid grid-rows-1 bg-sky-200 border-b-2 border-sky-600 mb-2">
@@ -10,7 +11,7 @@
           id="name"
           class="transition-all rounded-lg font-semibold ease-in-out userInput text-center border-b-2 border-zinc-900 hover:scale-105 focus:outline-none text-xl"
           placeholder="Name"
-          [value]="userInfo().profile!.name"
+          [value]="this.userInfo.profile!.name"
           (input)="onInputChange($event, 'name')"
         />
       </div>
@@ -20,7 +21,7 @@
           id="lastName"
           class="transition-all rounded-lg font-semibold ease-in-out userInput text-center border-b-2 border-zinc-900 hover:scale-105 focus:outline-none text-xl"
           placeholder="Apellido"
-          [value]="userInfo().profile!.lastName"
+          [value]="this.userInfo.profile!.lastName"
           (input)="onInputChange($event, 'name')"
         />
       </div>
@@ -30,7 +31,7 @@
           id="country"
           class="transition-all rounded-lg font-semibold ease-in-out userInput text-center border-b-2 border-zinc-900 hover:scale-105 focus:outline-none text-xl"
           placeholder="País"
-          [value]="userInfo().profile!.country"
+          [value]="this.userInfo.profile!.country"
           (input)="onInputChange($event, 'country')"
         />
       </div>
@@ -40,7 +41,7 @@
           id="city"
           class="transition-all rounded-lg font-semibold ease-in-out userInput text-center border-b-2 border-zinc-900 hover:scale-105 focus:outline-none text-xl"
           placeholder="Ciudad"
-          [value]="userInfo().profile!.city"
+          [value]="this.userInfo.profile!.city"
           (input)="onInputChange($event, 'city')"
         />
       </div>
@@ -50,16 +51,21 @@
           id="zipCode"
           class="transition-all rounded-lg font-semibold ease-in-out userInput text-center border-b-2 border-zinc-900 hover:scale-105 focus:outline-none text-xl"
           placeholder="Cod. Postal"
-          [value]="userInfo().profile!.zipCode"
+          [value]="this.userInfo.profile!.zipCode"
           (input)="onInputChange($event, 'zipCode')"
         />
       </div>
     </div>
   </div>
-  <div class="grid grid-rows-1 mt-2 mx-5">
+  <div class="grid grid-cols-2 gap-2 mt-2 mx-5">
     <button (click)="saveProfile()"
-            class="transition-all hover:bg-blue-600 hover:scale-105 font-semibold rounded bg-blue-400 px-3 py-1 text-white w-full text-xl active:scale-100">
+            class="transition-all hover:bg-blue-600 hover:scale-105 font-semibold rounded bg-blue-400 p-1 text-white w-full text-xl active:scale-100">
       Guardar
+    </button>
+    <button
+      class="transition-all hover:bg-red-600 hover:scale-105 font-semibold rounded bg-red-500 p-1 text-white w-full text-xl active:scale-100"
+      (click)="goHome()">
+      <fa-icon [icon]="faHouse"></fa-icon>
     </button>
   </div>
   <hr>
