@@ -8,9 +8,11 @@
       AdMeet
     </div>
     <!-- Put the logout button on right corner -->
-    <div class="buttonsOnRight mx-3 my-2">
+    <div class="buttonsOnRight flex gap-2 mx-3 my-2">
       <fa-icon [icon]="faCircleUser" class="text-3xl text-zinc-800 transition-all ease-in-out hover:scale-105"
                (click)="goToProfile()"></fa-icon>
+      <fa-icon [icon]="faSignOut" class="text-2xl text-red-500 transition-all my-auto ease-in-out hover:scale-105"
+               (click)="logOut()"></fa-icon>
     </div>
 
   </div>
