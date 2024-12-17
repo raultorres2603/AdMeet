@@ -4,6 +4,7 @@ import {AuthService} from '../../Services/auth/auth.service';
 import {Iauthservice} from '../../Interfaces/iauthservice';
 import {UserService} from '../../Services/user/user.service';
 import {NavbarComponent} from '../navbar/navbar.component';
+import {faHouse} from '@fortawesome/free-solid-svg-icons';
 import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
 import {Router} from '@angular/router';
 
@@ -20,6 +21,9 @@ export class ProfileEditComponent {
   private authService: Iauthservice = inject(AuthService)
 
   private router: Router = inject(Router)
+
+  protected readonly faHouse = faHouse;
+
 
   onInputChange(event: Event, propName: string): void {
     const inputElement = event.target as HTMLInputElement;
