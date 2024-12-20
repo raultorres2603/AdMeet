@@ -9,6 +9,7 @@ import {Ihttp} from '../../Interfaces/ihttp';
 import {Iuser} from '../../Interfaces/iuser';
 import {CommonModule} from '@angular/common';
 import {CategoryService} from '../../Services/category/category.service';
+import {CategoryComponent} from '../category/category.component';
 
 interface Iresponse {
   user: Iuser,
@@ -17,7 +18,7 @@ interface Iresponse {
 
 @Component({
   selector: 'app-root',
-  imports: [NavbarComponent, CommonModule],
+  imports: [NavbarComponent, CommonModule, CategoryComponent],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })
@@ -25,7 +26,7 @@ interface Iresponse {
 export class HomeComponent implements OnInit {
   private authService: Iauthservice = inject(AuthService);
   private userService: Iuserservice = inject(UserService);
-  private categoryService: any = inject(CategoryService);
+  protected categoryService: any = inject(CategoryService);
   private http: Ihttp = inject(HttpService);
 
   ngOnInit(): void {
@@ -44,6 +45,7 @@ export class HomeComponent implements OnInit {
       next: (response: Array<any>) => {
         console.log(response);
         this.categoryService.setCategories(response);
+        console.log(this.categoryService.getCategories());
       }
     })
   }
