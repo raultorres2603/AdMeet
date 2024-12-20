@@ -3,10 +3,11 @@ import {ILoginComp} from '../../Interfaces/ilogin-comp';
 import {Iauthservice} from '../../Interfaces/iauthservice';
 import {AuthService} from '../../Services/auth/auth.service';
 import {IniTitleComponent} from '../ini-title/ini-title.component';
+import {RouterLink} from '@angular/router';
 
 @Component({
   selector: 'app-root',
-  imports: [IniTitleComponent],
+  imports: [IniTitleComponent, RouterLink],
   templateUrl: './login.component.html',
   styleUrl: './login.component.css'
 })

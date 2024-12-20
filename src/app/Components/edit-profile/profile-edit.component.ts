@@ -22,6 +22,9 @@ export class ProfileEditComponent {
 
   private router: Router = inject(Router)
 
+  protected readonly faHouse = faHouse;
+
+
   onInputChange(event: Event, propName: string): void {
     const inputElement = event.target as HTMLInputElement;
     this.userInfo.profile![propName] = inputElement.value;
@@ -34,6 +37,4 @@ export class ProfileEditComponent {
   goHome(): void {
     this.router.navigate(['/home']);
   }
-
-  protected readonly faHouse = faHouse;
 }
