@@ -1,15 +1,17 @@
 import {Component, inject, OnInit} from '@angular/core';
-import {NavbarComponent} from '../navbar/navbar.component';
-import {Iauthservice} from '../../Interfaces/iauthservice';
-import {AuthService} from '../../Services/auth/auth.service';
-import {UserService} from '../../Services/user/user.service';
-import {Iuserservice} from '../../Interfaces/iuserservice';
-import {HttpService} from '../../Services/http/http.service';
-import {Ihttp} from '../../Interfaces/ihttp';
-import {Iuser} from '../../Interfaces/iuser';
+import {NavbarComponent} from '../../nav/navbar/navbar.component';
+import {Iauthservice} from '../../../Interfaces/iauthservice';
+import {AuthService} from '../../../Services/auth/auth.service';
+import {UserService} from '../../../Services/user/user.service';
+import {Iuserservice} from '../../../Interfaces/iuserservice';
+import {HttpService} from '../../../Services/http/http.service';
+import {Ihttp} from '../../../Interfaces/ihttp';
+import {Iuser} from '../../../Interfaces/iuser';
 import {CommonModule} from '@angular/common';
-import {CategoryService} from '../../Services/category/category.service';
+import {CategoryService} from '../../../Services/category/category.service';
 import {CategoryComponent} from '../category/category.component';
+import {SearcherComponent} from '../searcher/searcher.component';
+import {RadioToSearchComponent} from '../radio-to-search/radio-to-search.component';
 
 interface Iresponse {
   user: Iuser,
@@ -18,7 +20,7 @@ interface Iresponse {
 
 @Component({
   selector: 'app-root',
-  imports: [NavbarComponent, CommonModule, CategoryComponent],
+  imports: [NavbarComponent, CommonModule, CategoryComponent, SearcherComponent, RadioToSearchComponent],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })

@@ -1,0 +1,9 @@
+<div class="grid grid-rows-2 mx-3 my-3">
+  <div id="titleRadio flex justify-between grid grid-rows-1">
+    <div class="title flex">
+      Radio de busqueda:
+      <div class="radio ml-1 font-semibold">{{ this.radio() == 0 ? 'Cerca de mi zona' : this.radio() + ' km' }}</div>
+    </div>
+  </div>
+  <input type="range" min="0" max="100" [defaultValue]="0" (input)="changeRadio($event)">
+</div>
