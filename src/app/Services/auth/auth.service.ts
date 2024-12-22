@@ -48,7 +48,7 @@ export class AuthService implements Iauthservice {
   }
 
   updateInfoOnDb(user: Iuser): void {
-    this.http.put(`api/user/${this.getToken()}/update`, user).subscribe({
+    this.http.put(`api/user/update`, user).subscribe({
       next: () => {
         this.toaster.success('Actualizado', 'Información actualizada');
         this.router.navigate(['/home']);
