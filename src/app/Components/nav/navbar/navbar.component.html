@@ -1,11 +1,12 @@
 <div class="grid grid-rows-1">
-  <div class="flex justify-between">
-    <div
-      class="transition-all ease-in-out hover:scale-105 titleLogin mx-3 my-2 text-3xl text-zinc-800 font-bold">
-      <fa-icon [icon]="faBars"></fa-icon>
+  <div class="flex justify-between items-center">
+    <div class="barsButton">
+      <fa-icon [icon]="faBars" class="text-3xl my-2 mx-3 text-zinc-800 transition-all ease-in-out hover:scale-105"
+               (click)="changeVisible()"></fa-icon>
     </div>
     <div class="title my-2 text-2xl text-zinc-800 font-bold">
-      AdMeet
+      <a class="transition-all ease-in-out hover:scale-105 decoration-transparent text-black"
+         [routerLink]="['/home']">AdMeet </a>
     </div>
     <!-- Put the logout button on right corner -->
     <div class="buttonsOnRight flex gap-2 mx-3 my-2">
@@ -17,3 +18,5 @@
 
   </div>
 </div>
+<p-drawer [(visible)]="this.visible" header="AdMenu">
+</p-drawer>
