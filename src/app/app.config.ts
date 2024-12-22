@@ -13,7 +13,10 @@ import Aura from '@primeng/themes/aura';
 export const appConfig: ApplicationConfig = {
   providers: [provideZoneChangeDetection({eventCoalescing: true}), provideRouter(routes), provideHttpClient(withInterceptors([authInterceptor])), provideAnimations(), provideToastr(), provideAnimationsAsync(), providePrimeNG({
     theme: {
-      preset: Aura
-    }
+      preset: Aura,
+      options: {
+        darkModeSelector: '.my-app-dark'
+      }
+    },
   })]
 };
