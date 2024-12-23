@@ -8,36 +8,30 @@ import {Drawer} from 'primeng/drawer';
 
 
 @Component({
-  selector: 'app-navbar',
-  imports: [FontAwesomeModule, RouterLink, Drawer],
-  templateUrl: './navbar.component.html',
-  styleUrl: './navbar.component.css'
+    selector: 'app-navbar',
+    imports: [FontAwesomeModule, RouterLink, Drawer],
+    templateUrl: './navbar.component.html',
+    styleUrl: './navbar.component.css'
 })
 export class NavbarComponent {
 
-  private authService: Iauthservice = inject(AuthService)
-  private router: Router = inject(Router)
-  protected readonly faCircleUser = faCircleUser;
-  protected readonly faSignOut = faSignOut;
-  protected readonly faBars = faBars;
-  protected readonly items = [
-    {
-      label: 'Profile',
-      icon: 'faCircleUser',
+    private authService: Iauthservice = inject(AuthService)
+    private router: Router = inject(Router)
+    protected readonly faCircleUser = faCircleUser;
+    protected readonly faSignOut = faSignOut;
+    protected readonly faBars = faBars;
+    protected visible: WritableSignal<boolean> = signal(false)
+
+
+    logOut(): void {
+        this.authService.logOut();
     }
-  ]
-  protected visible: WritableSignal<boolean> = signal(false)
 
+    goToProfile(): void {
+        this.router.navigate(['/profile']);
+    }
 
-  logOut(): void {
-    this.authService.logOut();
-  }
-
-  goToProfile(): void {
-    this.router.navigate(['/profile']);
-  }
-
-  changeVisible(): void {
-    this.visible.set(!this.visible());
-  }
+    changeVisible(): void {
+        this.visible.set(!this.visible());
+    }
 }
