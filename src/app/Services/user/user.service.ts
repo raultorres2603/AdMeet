@@ -9,21 +9,17 @@ export class UserService implements Iuserservice {
   private user = signal<Iuser>({
     email: '',
     password: '',
-    name: '',
-    lastName: '',
-    zipCode: '',
-    city: '',
-    country: ''
+    profile: {
+      name: '',
+      lastName: '',
+      city: '',
+      country: '',
+      zipCode: '',
+      gender: '',
+      birthday: '',
+      preferences: ''
+    }
   });
-
-
-  getEmail(): string {
-    return this.user().email;
-  }
-
-  getPassword(): string {
-    return this.user().password;
-  }
 
   updateInfo(vUser: Iuser): void {
     this.user.update(u => ({
@@ -41,16 +37,18 @@ export class UserService implements Iuserservice {
     this.user.update(_ => ({
       email: '',
       password: '',
-      name: '',
-      lastName: '',
-      zipCode: '',
-      city: '',
-      country: ''
+      profile: {}
     }));
     console.log(this.user());
   }
 
-  toString(): string {
-    return `${this.getEmail()} - ${this.getPassword()}`;
+  updateKeyValue(key: string, value: string): void {
+    this.user.update(u => ({
+      ...u,
+      profile: {
+        ...u.profile,
+        [key]: value
+      }
+    }));
   }
 }

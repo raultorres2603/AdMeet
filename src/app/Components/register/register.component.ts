@@ -1,12 +1,14 @@
 import {Component, inject} from '@angular/core';
 import {Iauthservice} from '../../Interfaces/iauthservice';
 import {AuthService} from '../../Services/auth/auth.service';
-import {IniTitleComponent} from '../ini-title/ini-title.component';
+import {IniTitleComponent} from '../nav/ini-title/ini-title.component';
+import {RouterLink} from '@angular/router';
 
 @Component({
   selector: 'app-register',
   imports: [
-    IniTitleComponent
+    IniTitleComponent,
+    RouterLink
   ],
   templateUrl: './register.component.html',
   styleUrl: './register.component.css'

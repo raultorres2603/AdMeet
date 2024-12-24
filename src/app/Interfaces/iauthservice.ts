@@ -12,4 +12,6 @@ export interface Iauthservice {
   logOut(): void
 
   updateToken(newToken: string): void
+
+  updateInfoOnDb(user: Iuser): void
 }

@@ -7,28 +7,29 @@ import {Ihttp} from '../../Interfaces/ihttp';
 import {Router} from '@angular/router';
 import {Iuserservice} from '../../Interfaces/iuserservice';
 import {UserService} from '../user/user.service';
+import {Icookies} from '../../Interfaces/icookies';
+import {CookiesAmService} from '../cookies-am/cookies.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService implements Iauthservice {
-  private token: string = sessionStorage.getItem('MUT') || '';
+  private cookieService: Icookies = inject(CookiesAmService);
   private toaster: ToastrService = inject(ToastrService);
   private userService: Iuserservice = inject(UserService)
   private http: Ihttp = inject(HttpService)
   private router: Router = inject(Router);
 
   private setToken(newToken: string): void {
-    this.token = newToken;
-    sessionStorage.setItem('MUT', this.token);
+    this.cookieService.set('MUT', newToken);
   }
 
   public getToken(): string {
-    return this.token;
+    return this.cookieService.get('MUT');
   }
 
   public isAuthenticated(): boolean {
-    return !!this.token;
+    return !!this.getToken();
   }
 
   public logIn(user: Iuser): void {
@@ -46,7 +47,20 @@ export class AuthService implements Iauthservice {
     });
   }
 
-  public register(user: Iuser): void {
+  updateInfoOnDb(user: Iuser): void {
+    this.http.put(`api/user/update`, user).subscribe({
+      next: () => {
+        this.toaster.success('Actualizado', 'Información actualizada');
+        this.router.navigate(['/home']);
+      },
+      error: (err) => {
+        this.toaster.error('Error en actualización', 'Error');
+        console.log(err);
+      }
+    });
+  }
+
+  register(user: Iuser): void {
     const register = this.http.post('api/user/register', user);
     register.subscribe({
       next: () => {
@@ -60,15 +74,13 @@ export class AuthService implements Iauthservice {
     });
   }
 
-  public logOut(): void {
-    this.token = '';
-    sessionStorage.removeItem('MUT');
+  logOut(): void {
+    this.cookieService.delete('MUT');
     this.userService.logOut();
     this.router.navigate(['/login']);
   }
 
-  public updateToken(newToken: string): void {
+  updateToken(newToken: string): void {
     this.setToken(newToken);
-    sessionStorage.setItem('MUT', this.token);
   }
 }
