@@ -1,4 +1,4 @@
-import {Injectable, signal} from '@angular/core';
+import {Injectable, signal, WritableSignal} from '@angular/core';
 import {Iuser} from '../../Interfaces/iuser';
 import {Iuserservice} from '../../Interfaces/iuserservice';
 
@@ -6,9 +6,10 @@ import {Iuserservice} from '../../Interfaces/iuserservice';
   providedIn: 'root'
 })
 export class UserService implements Iuserservice {
-  private user = signal<Iuser>({
+  private user: WritableSignal<Iuser> = signal<Iuser>({
     email: '',
     password: '',
+    isAdmin: false,
     profile: {
       name: '',
       lastName: '',
@@ -17,7 +18,7 @@ export class UserService implements Iuserservice {
       zipCode: '',
       gender: '',
       birthday: '',
-      preferences: ''
+      preferences: '',
     }
   });
 
@@ -37,6 +38,7 @@ export class UserService implements Iuserservice {
     this.user.update(_ => ({
       email: '',
       password: '',
+      isAdmin: false,
       profile: {}
     }));
     console.log(this.user());

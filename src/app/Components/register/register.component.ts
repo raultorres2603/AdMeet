@@ -35,6 +35,7 @@ export class RegisterComponent {
     this.authService.register({
       email: this.Email,
       password: this.Password,
+      isAdmin: false
     })
   }
 }
