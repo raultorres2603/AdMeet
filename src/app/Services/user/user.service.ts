@@ -27,7 +27,6 @@ export class UserService implements Iuserservice {
       ...u,
       ...vUser
     }));
-    console.log(this.user());
   }
 
   getUser(): Iuser {
@@ -41,7 +40,6 @@ export class UserService implements Iuserservice {
       isAdmin: false,
       profile: {}
     }));
-    console.log(this.user());
   }
 
   updateKeyValue(key: string, value: string): void {

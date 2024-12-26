@@ -8,7 +8,7 @@
   <app-radio-to-search/>
   <!-- For each category, print it -->
   <div class="flex justify-center">
-    <div class="grid grid-cols-3 gap-3">
+    <div class="grid grid-cols-3 gap-3 h-54 border-b-2 border-dashed border-zinc-200 overflow-y-scroll p-3">
       <app-category *ngFor="let category of this.categoryService.getCategories()" [Id]="category.id"
                     [Name]="category.name"
                     [Icon]="category.icon"/>
