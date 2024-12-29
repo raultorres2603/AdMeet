@@ -22,11 +22,9 @@ export class RegisterComponent {
     switch ((event.target as HTMLInputElement).id) {
       case 'Email':
         this.Email = (event.target as HTMLInputElement).value;
-        console.log(this.Email)
         break;
       case 'Password':
         this.Password = (event.target as HTMLInputElement).value;
-        console.log(this.Password)
         break;
     }
   }

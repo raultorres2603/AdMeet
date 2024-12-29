@@ -1,4 +1,6 @@
 <app-navbar/>
 <div class="kpiDashboardComp">
-  
+  <div class="grid grid-rows-1 mx-2">
+    <p-chart type="bar" [data]="this.usersData()" [options]="options" (onDataSelect)="seeSpecificData($event)"/>
+  </div>
 </div>
