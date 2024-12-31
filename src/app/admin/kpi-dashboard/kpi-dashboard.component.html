@@ -21,18 +21,22 @@
   </div>
   <div class="grid grid-rows-1 my-2 mx-2">
     <div class="specificDataOfCountry">
-      <p-table size="small" sortMode="multiple" scrollable="true" [loading]="this.loadingCountryTable()"
+      <p-table size="small" [value]="this.countryTableData()" sortMode="multiple" scrollable="true"
+               [loading]="this.loadingCountryTable()"
                paginator="true" rowHover="true" [rows]="5">
         <ng-template #header>
           <tr>
-            <th>ID</th>
             <th>Email</th>
             <th>Nombre</th>
             <th>Apellidos</th>
           </tr>
         </ng-template>
-        <ng-template>
-
+        <ng-template #body let-user>
+          <tr class="text-sm">
+            <td>{{ user.email }}</td>
+            <td>{{ user.profile.name }}</td>
+            <td>{{ user.profile.lastName }}</td>
+          </tr>
         </ng-template>
       </p-table>
     </div>

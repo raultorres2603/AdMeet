@@ -7,10 +7,11 @@ import {IKpiData} from '../../Interfaces/iKpiData';
 import {ToastrService} from 'ngx-toastr';
 import {IkpiDashboard} from '../../Interfaces/ikpi-dashboard';
 import {TableModule} from 'primeng/table';
+import {CommonModule} from '@angular/common';
 
 @Component({
   selector: 'app-kpi-dashboard',
-  imports: [NavbarComponent, ChartModule, TableModule],
+  imports: [NavbarComponent, ChartModule, TableModule, CommonModule],
   templateUrl: './kpi-dashboard.component.html',
   styleUrl: './kpi-dashboard.component.css'
 })
@@ -18,6 +19,7 @@ export class KpiDashboardComponent implements OnInit, IkpiDashboard {
 
   protected readonly usersData: WritableSignal<any> = signal(null);
   protected readonly countryData: WritableSignal<any> = signal(null);
+  protected readonly countryTableData: WritableSignal<any> = signal(null);
   private http: Ihttp = inject(HttpService);
   private toastr: ToastrService = inject(ToastrService);
   protected loadingCountryTable: WritableSignal<boolean> = signal(false);
@@ -162,14 +164,32 @@ export class KpiDashboardComponent implements OnInit, IkpiDashboard {
   }
 
   protected seeSpecificDataOnCountryGraph(event: any): void {
-    const datasetIndex = event.element.datasetIndex;
     const dataIndex = event.element.index;
-    const dataset = this.countryData().datasets[datasetIndex];
     const label = this.countryData().labels[dataIndex];
-    const value = dataset.data[dataIndex];
 
     console.log(`Label: ${label}`);
-    console.log(`Value: ${value}`);
     // Puedes realizar otras acciones aquí, como actualizar datos o mostrar un modal.
+
+    this.callSpecificDataOnCountryGraph(label);
+  }
+
+  private callSpecificDataOnCountryGraph(country: string): void {
+
+    this.loadingCountryTable.set(true);
+
+    this.http.get(`api/admin/kpi/${country}`).subscribe({
+      next: (response: any) => {
+        console.log(response);
+        this.countryTableData.set(response);
+      },
+      error: (err) => {
+        console.log(err);
+        this.toastr.error('Error al obtener los datos', 'Error');
+      },
+      complete: () => {
+        this.loadingCountryTable.set(false);
+      }
+    })
+
   }
 }
