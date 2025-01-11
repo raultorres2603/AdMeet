@@ -5,6 +5,8 @@ import {LoginComponent} from './Components/login/login.component';
 import {loginRegGuard} from './Guards/login-reg.guard';
 import {RegisterComponent} from './Components/register/register.component';
 import {ProfileEditComponent} from './Components/nav/edit-profile/profile-edit.component';
+import {adminGuard} from './Guards/admin.guard';
+import {KpiDashboardComponent} from './admin/kpi-dashboard/kpi-dashboard.component';
 
 export const routes: Routes = [
   {
@@ -26,6 +28,16 @@ export const routes: Routes = [
     path: 'profile',
     component: ProfileEditComponent,
     canActivate: [authGuard],
+  },
+  {
+    path: 'admin',
+    canActivate: [adminGuard],
+    children: [
+      {
+        path: 'kpi',
+        component: KpiDashboardComponent
+      }
+    ]
   },
   {
     path: '**',

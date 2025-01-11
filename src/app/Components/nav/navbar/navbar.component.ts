@@ -5,11 +5,14 @@ import {Router, RouterLink} from '@angular/router';
 import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
 import {faBars, faCircleUser, faSignOut} from '@fortawesome/free-solid-svg-icons';
 import {Drawer} from 'primeng/drawer';
+import {Iuserservice} from "../../../Interfaces/iuserservice";
+import {UserService} from "../../../Services/user/user.service";
+import {NgIf} from "@angular/common";
 
 
 @Component({
     selector: 'app-navbar',
-    imports: [FontAwesomeModule, RouterLink, Drawer],
+    imports: [FontAwesomeModule, RouterLink, Drawer, NgIf],
     templateUrl: './navbar.component.html',
     styleUrl: './navbar.component.css'
 })
@@ -21,6 +24,7 @@ export class NavbarComponent {
     protected readonly faSignOut = faSignOut;
     protected readonly faBars = faBars;
     protected visible: WritableSignal<boolean> = signal(false)
+    protected userService: Iuserservice = inject(UserService);
 
 
     logOut(): void {
