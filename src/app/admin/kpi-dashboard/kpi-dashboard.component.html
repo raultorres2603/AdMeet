@@ -1,0 +1,44 @@
+<app-navbar/>
+<div class="kpiDashboardComp">
+  <div class="grid grid-rows-1 text-center my-2">
+    <div class="titleLogin text-2xl font-semibold">KPI Usuarios</div>
+  </div>
+  <div class="grid grid-rows-1 mx-2">
+    <p-chart type="bar" [data]="this.usersData()" [options]="options"
+             (onDataSelect)="seeSpecificDataOnUsersBar($event)"/>
+  </div>
+  <div class="grid grid-rows-1 text-center my-2">
+    <div class="titleLogin text-2xl font-semibold">KPI Países</div>
+  </div>
+  <div class="grid grid-rows-1 mx-2 gap-4">
+    <p-chart type="doughnut" [data]="this.countryData()" [options]="options"
+             (onDataSelect)="seeSpecificDataOnCountryGraph($event)"/>
+  </div>
+  <div class="grid grid-rows-1 mx-2 my-2">
+    <div class="title text-center">
+      <div class="titleLogin text-xl font-semibold">Selección especifica</div>
+    </div>
+  </div>
+  <div class="grid grid-rows-1 my-2 mx-2">
+    <div class="specificDataOfCountry">
+      <p-table size="small" [value]="this.countryTableData()" sortMode="multiple" scrollable="true"
+               [loading]="this.loadingCountryTable()"
+               paginator="true" rowHover="true" [rows]="5">
+        <ng-template #header>
+          <tr>
+            <th>Email</th>
+            <th>Nombre</th>
+            <th>Apellidos</th>
+          </tr>
+        </ng-template>
+        <ng-template #body let-user>
+          <tr class="text-sm">
+            <td>{{ user.email }}</td>
+            <td>{{ user.profile.name }}</td>
+            <td>{{ user.profile.lastName }}</td>
+          </tr>
+        </ng-template>
+      </p-table>
+    </div>
+  </div>
+</div>

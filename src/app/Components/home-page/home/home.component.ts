@@ -32,22 +32,24 @@ export class HomeComponent implements OnInit {
   private http: Ihttp = inject(HttpService);
 
   ngOnInit(): void {
-    console.log("Auth done");
     this.http.get(`api/user/${this.authService.getToken()}/get`).subscribe({
       next: (response: Iresponse) => {
         this.userService.updateInfo(response.user);
         this.authService.updateToken(response.newTok);
       },
-      error: (_) => {
+      error: (err) => {
+        console.log(err);
         this.authService.logOut();
       }
     })
     // Pick categories from API
     this.http.get('api/category/all').subscribe({
       next: (response: Array<any>) => {
-        console.log(response);
         this.categoryService.setCategories(response);
-        console.log(this.categoryService.getCategories());
+      },
+      error: (err) => {
+        console.log(err);
+        this.authService.logOut();
       }
     })
   }

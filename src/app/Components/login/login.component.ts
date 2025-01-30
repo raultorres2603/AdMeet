@@ -31,6 +31,7 @@ export class LoginComponent implements ILoginComp {
     this.authService.logIn({
       email: this.Email,
       password: this.Password,
+      isAdmin: false
     });
   }
 

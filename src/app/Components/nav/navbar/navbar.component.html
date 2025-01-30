@@ -1,22 +1,29 @@
 <div class="grid grid-rows-1">
-  <div class="flex justify-between items-center">
-    <div class="barsButton">
-      <fa-icon [icon]="faBars" class="text-3xl my-2 mx-3 text-zinc-800 transition-all ease-in-out hover:scale-105"
-               (click)="changeVisible()"></fa-icon>
-    </div>
-    <div class="title my-2 text-2xl text-zinc-800 font-bold">
-      <a class="transition-all ease-in-out hover:scale-105 decoration-transparent text-black"
-         [routerLink]="['/home']">AdMeet </a>
-    </div>
-    <!-- Put the logout button on right corner -->
-    <div class="buttonsOnRight flex gap-2 mx-3 my-2">
-      <fa-icon [icon]="faCircleUser" class="text-3xl text-zinc-800 transition-all ease-in-out hover:scale-105"
-               (click)="goToProfile()"></fa-icon>
-      <fa-icon [icon]="faSignOut" class="text-2xl text-red-500 transition-all my-auto ease-in-out hover:scale-105"
-               (click)="logOut()"></fa-icon>
-    </div>
+    <div class="flex justify-between items-center">
+        <div class="barsButton">
+            <fa-icon [icon]="faBars" class="text-3xl my-2 mx-3 text-zinc-800 transition-all ease-in-out hover:scale-105"
+                     (click)="changeVisible()"></fa-icon>
+        </div>
+        <div class="title my-2 text-2xl text-zinc-800 font-bold">
+            <a class="transition-all ease-in-out hover:scale-105 decoration-transparent text-black"
+               [routerLink]="['/home']">AdMeet </a>
+        </div>
+        <!-- Put the logout button on right corner -->
+        <div class="buttonsOnRight flex gap-2 mx-3 my-2">
+            <fa-icon [icon]="faCircleUser" class="text-3xl text-zinc-800 transition-all ease-in-out hover:scale-105"
+                     (click)="goToProfile()"></fa-icon>
+            <fa-icon [icon]="faSignOut" class="text-2xl text-red-500 transition-all my-auto ease-in-out hover:scale-105"
+                     (click)="logOut()"></fa-icon>
+        </div>
 
-  </div>
+    </div>
 </div>
 <p-drawer [(visible)]="this.visible" header="AdMenu">
+    <div class="adminDiv" *ngIf="this.userService.getUser().isAdmin">
+        <div class="grid grid-rows-1 text-2xl font-semibold underline">
+            Admin portal
+        </div>
+        <div class="grid grid-rows-1"><a routerLink="/admin/kpi" class="text-decoration-none">KPI Dashboard</a>
+        </div>
+    </div>
 </p-drawer>
